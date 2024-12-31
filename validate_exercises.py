@@ -37,7 +37,7 @@ def find_invalid_exercises(exercises):
 
 # Main function to load and validate exercises
 def main():
-    file_path = "fixed_exercises_with_github_images.json"  # Update with your file path
+    file_path = "fixed_exercises.json"  # Update with your file path
     exercises = load_exercises(file_path)
     
     invalid_exercises = find_invalid_exercises(exercises)
