@@ -1,1 +1,6 @@
-/old files
+*
+!.gitignore
+!main.py
+!requirements*.*
+!fixed_exercises.json
+
