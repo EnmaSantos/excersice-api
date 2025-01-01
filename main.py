@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
 import os
+import uvicorn
 
 # Sample Exercise Data
 import json
@@ -28,7 +29,7 @@ class Exercise(BaseModel):
     instructions: List[str]
     category: str
     images: List[str]
-    id: str
+    id: int
     calories_per_hour: int
     duration_minutes: int
     total_calories: float
@@ -44,15 +45,25 @@ def get_exercises():
     return exercise_data
 
 @app.get("/exercises/{exercise_id}", response_model=Exercise, tags=["Exercises"])
-def get_exercise_by_id(exercise_id: str):
+def get_exercise_by_id(exercise_id: int):
     """Fetch a single exercise by ID."""
     for exercise in exercise_data:
         if exercise["id"] == exercise_id:
             return exercise
     return {"error": "Exercise not found"}
 
-import uvicorn
+@app.get("/exercises/search/{name}", response_model=List[Exercise], tags=["Exercises"])
+def search_exercises_by_name(name: str):
+    """Search exercises by name."""
+    search_term = name.lower()
+    matching_exercises = [
+        exercise for exercise in exercise_data 
+        if search_term in exercise["name"].lower()
+    ]
+    if not matching_exercises:
+        return []
+    return matching_exercises
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run(app, host="127.0.0.1", port=port)
