@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
 import os
@@ -47,10 +47,14 @@ def get_exercises():
 @app.get("/exercises/{exercise_id}", response_model=Exercise, tags=["Exercises"])
 def get_exercise_by_id(exercise_id: int):
     """Fetch a single exercise by ID."""
-    for exercise in exercise_data:
-        if exercise["id"] == exercise_id:
-            return exercise
-    return {"error": "Exercise not found"}
+    try:
+        exercise_id = int(exercise_id)
+        for exercise in exercise_data:
+            if int(exercise["id"]) == exercise_id:
+                return exercise
+        raise HTTPException(status_code=404, detail="Exercise not found")
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid ID format")
 
 @app.get("/exercises/search/{name}", response_model=List[Exercise], tags=["Exercises"])
 def search_exercises_by_name(name: str):
