@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
+import os
 
 # Sample Exercise Data
 import json
@@ -53,4 +54,5 @@ def get_exercise_by_id(exercise_id: str):
 import uvicorn
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
