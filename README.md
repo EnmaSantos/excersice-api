@@ -122,7 +122,6 @@ for exercise in matching_exercises:
 This project builds upon the "Free Exercise DB" created by Ollie Jennings and maintained by Yuhonas. The original database provides a comprehensive collection of exercises in JSON format with associated images.
 
 - Original project: [Free Exercise DB](https://github.com/yuhonas/free-exercise-db)
-- Created by: [Ollie Jennings](https://github.com/ollie-jennings)
 - Maintained by: [Yuhonas](https://github.com/yuhonas)
 
 ## License
