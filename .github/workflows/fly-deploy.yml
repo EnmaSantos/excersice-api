@@ -3,13 +3,14 @@ name: Fly Deploy
 on:
   push:
     branches:
-      - main    # IMPORTANT: Change this to 'master' if your main branch is called master
+      - main
 
 jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
-    concurrency: deploy-group    # Optional: ensures only one deployment runs at a time
+    environment: production  # <---- ADD THIS LINE
+    concurrency: deploy-group
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
