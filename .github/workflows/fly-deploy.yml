@@ -9,9 +9,12 @@ jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
-    environment: production  # <---- ADD THIS LINE
+    environment: # <--- Modify this section
+      name: production
+      url: https://excersice-api.fly.dev # <--- ADD your app's URL here
     concurrency: deploy-group
     steps:
+      # ... rest of your steps remain the same ...
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only
