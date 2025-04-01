@@ -1,32 +1,36 @@
 # flyctl launch added from .gitignore
-**\old_files
-**\validate_exercises.py
-**\fix-to-excersices.py
-**\fixed_exercises_with_github_images.json
+**/old_files/
+**/validate_exercises.py
+**/fix-to-excersices.py
+**/fixed_exercises_with_github_images.json
+
 # Python
-**\__pycache__
-**\*.py[cod]
-**\*$py.class
-**\*.so
-**\.Python
-**\env
-**\build
-**\develop-eggs
-**\dist
-**\downloads
-**\eggs
-**\.eggs
-**\lib
-**\lib64
-**\parts
-**\sdist
-**\var
-**\*.egg-info
-**\.installed.cfg
-**\*.egg
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
 # Virtual Environment
-**\venv
-**\ENV
+venv/
+ENV/
+
 # Local environment variables
-**\.env
-fly.toml
+.env
+
+# NOTE: fly.toml is NOT ignored because it's needed for deployment.
