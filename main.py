@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 import os
@@ -15,6 +16,19 @@ app = FastAPI(
     title="Exercise API",
     description="API to fetch exercises and calorie burn information",
     version="1.0.0"
+)
+
+origins = [
+    "http://localhost:3000", # Your React frontend development server
+    # Add your deployed Vercel frontend URL here when you have it, e.g.:
+    "https://your-vitality-vista.vercel.app",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins, # List of origins that are allowed to make requests
+    allow_credentials=True, # Allow cookies to be included in requests (optional)
+    allow_methods=["*"], # Allow all standard methods (GET, POST, etc.)
+    allow_headers=["*"], # Allow all headers
 )
 
 # Exercise Model
