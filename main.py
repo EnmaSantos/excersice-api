@@ -21,7 +21,7 @@ app = FastAPI(
 origins = [
     "http://localhost:3000", # Your React frontend development server
     # Add your deployed Vercel frontend URL here when you have it, e.g.:
-    "https://your-vitality-vista.vercel.app",
+    "https://vitality-vista.vercel.app",
 ]
 app.add_middleware(
     CORSMiddleware,
